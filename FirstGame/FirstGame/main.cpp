@@ -1,15 +1,21 @@
 // Include OpenGL ES Engine utils
 #include <es_util.h>
+#include "GameApp.h"
+#include "SplashScreenState.h"
+#include "GameState.h"
 
 float count = 0.0f;
 
 using namespace yam2d;
 
+GameApp* game;
+SplashScreenState* splash;
 
 // Initialize the game
 bool init(ESContext *esContext)
 {
-
+	game = new GameApp();
+	splash = new SplashScreenState();
 	return true;
 }
 
@@ -23,43 +29,29 @@ void deinit(ESContext *esContext)
 // Draw game
 void draw(ESContext *esContext)
 {
-	float vertexData[] =
-	{
-		0.3f, -0.3f, 0.0f,
-		-0.3f, -0.3f, 0.0f,
-		0.0f, 0.3f, 0.0f,
-	};
-
-	// Set the viewport
-	glViewport(0, 0, esContext->width, esContext->height);
-
-	// Set OpenGL clear color
-	glClearColor(float(count), 0.0f, 0.0f, 1.0f);
-
-	// Clear the color buffer
-	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-
-	// Enable vertex arrays
-	glEnableClientState(GL_VERTEX_ARRAY);
-
-	// Set vertex data
-	glVertexPointer(3, GL_FLOAT, 0, &vertexData);
-
-	// Draw one triangle
-	glDrawArrays(GL_TRIANGLES, 0, 3);
-
-	// Disable vertex arrays
-	glDisableClientState(GL_VERTEX_ARRAY);
+	//game->render(esContext);
+	splash->render(esContext);
 }
 
 
 // update game
-void update(ESContext*, float deltaTime)
+void update(ESContext* ctx, float deltaTime)
 {
-	count += deltaTime;
+	splash->update(ctx, deltaTime);
+	if (false)
+	{
+		esQuitApp;
+	}
+
+	/*game->update(ctx, deltaTime);
+	if (false)
+	{
+		esQuitApp;
+	}*/
+	/*count += deltaTime;
 
 	if (count > 1.0f)
-		count = 0.0f;
+		count = 0.0f;*/
 }
 
 //extern "C" void app_dummy();
@@ -70,7 +62,7 @@ int main(int argc, char *argv[])
 
 	ESContext esContext;
 	esInitContext(&esContext);
-	esCreateWindow(&esContext, "Hello Triangle", 1280, 720, ES_WINDOW_DEFAULT);
+	esCreateWindow(&esContext, "FirstGame", 1280, 720, ES_WINDOW_DEFAULT);
 
 
 	esRegisterInitFunc(&esContext, init);

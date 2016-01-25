@@ -1,14 +1,20 @@
 #pragma once
-#include <Object.h>
-#include <es_util.h>
-#include <Ref.h>
-class GameApp : yam2d::Object
+#include "Object.h"
+#include "Ref.h"
+#include "GameState.h"
+
+using namespace yam2d;
+
+class GameApp : public Object
 {
 public:
-	bool update(yam2d::ESContext* ctx, float deltaTime);
-	void render(yam2d::ESContext* ctx);
+	GameApp();
+	virtual~GameApp();
+
+	bool update(ESContext* ctx, float deltaTime);
+	void render(ESContext* ctx);
 	void setState(GameState* newState);
 protected:
-	yam2d::Ref<GameState> m_currentState;
+	Ref<GameState> m_currentState;
 };
 
