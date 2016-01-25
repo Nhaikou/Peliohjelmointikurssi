@@ -11,6 +11,6 @@ public:
 	virtual void render(ESContext* ctx);
 
 private:
-	Ref<yam2d::Sprite> m_sprite;
+	Ref<Sprite> m_sprite;
 };
 

@@ -6,7 +6,7 @@ namespace
 {
 	SpriteBatchGroup * batch = 0;
 	Texture* openGLTexture = 0;
-	Sprite* sprite = 0;
+	//Sprite* sprite = 0;
 }
 
 SplashScreenState::SplashScreenState()
@@ -15,21 +15,24 @@ SplashScreenState::SplashScreenState()
 
 	openGLTexture = new Texture("meepo2_splash.png");
 
-	sprite = new Sprite(0);
+	m_sprite = new Sprite(0);
+
+	//sprite = new Sprite(0);
 
 }
 
 
 SplashScreenState::~SplashScreenState()
 {
-
+	delete batch;
+	delete m_sprite;
 }
 
 bool SplashScreenState::update(ESContext* ctx, float deltaTime)
 {
 	float count = 0.0f;
 	batch->clear();
-	batch->addSprite(openGLTexture, sprite, vec2(0, 0), count, vec2(1024, 576));
+	batch->addSprite(openGLTexture, m_sprite, vec2(0, 0), count, vec2(1024, 576));
 
 	return true;
 }
