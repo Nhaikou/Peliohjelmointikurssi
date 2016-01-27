@@ -4,13 +4,14 @@
 class MainMenuState : public GameState
 {
 public:
-	MainMenuState();
+	MainMenuState(GameApp* app);
 	virtual~MainMenuState();
 
 	virtual bool update(ESContext* ctx, float deltaTime);
 	virtual void render(ESContext* ctx);
 
 private:
-	Ref<yam2d::Map> m_map;
+	GameApp* m_app;
+	Ref<Map> m_map;
 };
 

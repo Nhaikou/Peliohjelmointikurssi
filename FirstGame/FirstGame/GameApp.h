@@ -5,6 +5,8 @@
 
 using namespace yam2d;
 
+class GameState;
+
 class GameApp : public Object
 {
 public:

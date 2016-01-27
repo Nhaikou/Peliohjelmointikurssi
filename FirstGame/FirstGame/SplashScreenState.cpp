@@ -1,19 +1,38 @@
 #include "SplashScreenState.h"
-#include "SpriteBatch.h"
-#include "SpriteSheet.h"
-#include "Texture.h"
-namespace
-{
-	SpriteBatchGroup * batch = 0;
-	Texture* openGLTexture = 0;
-	//Sprite* sprite = 0;
-}
 
-SplashScreenState::SplashScreenState()
+SplashScreenState::SplashScreenState(GameApp* app) : GameState(app), m_app(app)
 {
+	esLogMessage(__FUNCTION__);
+	int cc = 0;
+	esLogMessage("Init... %d", cc++);
+	// Create new sprite batch group. This must be deleted at deinit.
 	batch = new SpriteBatchGroup();
 
+	esLogMessage("Init... %d", cc++);
+	// Load OpenGL logo to be used as texture for sprite.
 	openGLTexture = new Texture("meepo2_splash.png");
+
+	esLogMessage("Init... %d", cc++);
+	// Create new sprite, with default parameters.
+	sprite = new Sprite(0);
+
+	esLogMessage("Init... %d", cc++);
+	// Load font texture. Made with font creation tool like bitmap font builder.
+	fontTexture = new Texture("Fixedsys_24_Bold.png");
+
+	esLogMessage("Init... %d", cc++);
+	// Create font clip areas (sprite sheet), from dat file and texture. Dat-file is made with bitmap font builder.
+	font = SpriteSheet::autoFindFontFromTexture(fontTexture, "Fixedsys_24_Bold.dat");
+
+	esLogMessage("Init... %d", cc++);
+	// Create new text-object
+	text = new Text(0, font);
+
+	esLogMessage("Init... Done");
+
+	batch = new SpriteBatchGroup();
+
+	openGLTexture = new Texture("meepo_splash.png");
 
 	m_sprite = new Sprite(0);
 
@@ -24,20 +43,37 @@ SplashScreenState::SplashScreenState()
 
 SplashScreenState::~SplashScreenState()
 {
-	delete batch;
-	delete m_sprite;
+	
 }
 
 bool SplashScreenState::update(ESContext* ctx, float deltaTime)
 {
-	float count = 0.0f;
-	batch->clear();
-	batch->addSprite(openGLTexture, m_sprite, vec2(0, 0), count, vec2(1024, 576));
+	//esLogMessage(__FUNCTION__);
+	// Update total time counter.
+	//count += deltaTime;
 
+	// Set text.
+	text->setText("Ain't NOTHING gonna stop US now!!");
+
+	// Clear sprite before add new dynamic sprites.
+	batch->clear();
+
+	// Add sprite. Rotate it according to total time. We need also scale font a bit (100 times, so the sprite is 100x100 pixels).
+	batch->addSprite(openGLTexture, sprite, vec2(0, 0), 0, vec2(1280, 720));
+
+	// Add text to position -400,300
+	batch->addText(fontTexture, text, vec2(-ctx->width / 4, ctx->height / 3), 0);
+	m_totalTime += deltaTime;
+	if (m_totalTime > 3.0f)
+	{
+		//MenuState* menu = new MenuState(getApp());
+		getApp()->setState(new MainMenuState(getApp()));
+		return true;
+	}
 	return true;
 }
 
-void SplashScreenState::render(ESContext* esContext)
+void SplashScreenState::render(ESContext* ctx)
 {
 	// Set OpenGL clear color
 	glClearColor(0.5f, 0.5f, 0.5f, 1.0f);
@@ -46,17 +82,17 @@ void SplashScreenState::render(ESContext* esContext)
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
 	// Set the viewport to be full window area.
-	glViewport(0, 0, esContext->width, esContext->height);
+	glViewport(0, 0, ctx->width, ctx->height);
 
 	// Set projection to identity
 	glMatrixMode(GL_PROJECTION);
 	glLoadIdentity();
 
 	// Calculate half screen size
-	float left = -0.5f*esContext->width;
-	float right = 0.5f*esContext->width;
-	float bottom = -0.5f*esContext->height;
-	float top = 0.5f*esContext->height;
+	float left = -0.5f*ctx->width;
+	float right = 0.5f*ctx->width;
+	float bottom = -0.5f*ctx->height;
+	float top = 0.5f*ctx->height;
 
 	// Set OpenGL orthogonal projection for screen size <esContext->width,esContext->height>
 	glOrthof(float(int(left)), float(int(right)), float(int(bottom)), float(int(top)), -1.0, 1.0f);
