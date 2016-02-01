@@ -9,17 +9,15 @@ float count = 0.0f;
 using namespace yam2d;
 namespace
 {
-	GameApp* game; 
-	SplashScreenState* splash;
+	GameApp* m_app; 
 }
 
 
 // Initialize the game
 bool init(ESContext *esContext)
 {
-	game = new GameApp();
-	splash = new SplashScreenState(game);
-	game->setState(splash);
+	m_app = new GameApp();
+	m_app->setState(new SplashScreenState(m_app));
 	return true;
 }
 
@@ -27,14 +25,14 @@ bool init(ESContext *esContext)
 // Deinitialize the game
 void deinit(ESContext *esContext)
 {
-	delete game;
+	delete m_app;
 }
 
 
 // Draw game
 void draw(ESContext *esContext)
 {
-	game->render(esContext);
+	m_app->render(esContext);
 	//splash->render(esContext);
 }
 
@@ -47,7 +45,7 @@ void update(ESContext* ctx, float deltaTime)
 	if (count > 1.0f)
 		count = 0.0f;
 
-	game->update(ctx, deltaTime);
+	m_app->update(ctx, deltaTime);
 	//if (false)
 	//{
 	//	esQuitApp(ctx);
