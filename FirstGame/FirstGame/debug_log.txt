@@ -1,9 +1,0 @@
-SplashScreenState::SplashScreenState
-Init... 0
-Init... 1
-Init... 2
-Init... 3
-Init... 4
-Init... 5
-Error: Assertation failed at c:\users\nikokin\desktop\peliohjelmointikurssi\yam2d\engine\source\object.cpp:123: this->m_numOfRefs == 0
-Error: Assertation failed at c:\users\nikokin\desktop\peliohjelmointikurssi\yam2d\engine\include\object.h:72: m_numOfRefs > 0

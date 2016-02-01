@@ -46,10 +46,10 @@ void update(ESContext* ctx, float deltaTime)
 		count = 0.0f;
 
 	m_app->update(ctx, deltaTime);
-	//if (false)
-	//{
-	//	esQuitApp(ctx);
-	//}
+	if (false)
+	{
+		esQuitApp(ctx);
+	}
 }
 
 //extern "C" void app_dummy();

@@ -13,12 +13,13 @@ GameApp::~GameApp()
 
 bool GameApp::update(ESContext* ctx, float deltaTime)
 {
+	assert(m_currentState != 0);
 	return m_currentState->update(ctx, deltaTime);
-	return true;
 }
 
 void GameApp::render(ESContext* ctx)
 {
+	assert(m_currentState != 0);
 	m_currentState->render(ctx);
 }
 
