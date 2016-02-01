@@ -24,5 +24,6 @@ public:
 private:
 	GameApp* m_app;
 	Ref<Map> m_map;
+	Ref<Layer> backgroundLayer, objectsLayer;
 };
 

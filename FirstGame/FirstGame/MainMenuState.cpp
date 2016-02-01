@@ -1,7 +1,7 @@
 #include "MainMenuState.h"
 
 
-MainMenuState::MainMenuState(GameApp* app) : GameState(app), m_app(app), m_map(0)
+MainMenuState::MainMenuState(GameApp* app) : GameState(app), m_app(app), m_map(0), backgroundLayer(0), objectsLayer(0)
 {
 	// Tile size
 	vec2 tileSize(200, 104);
@@ -10,7 +10,7 @@ MainMenuState::MainMenuState(GameApp* app) : GameState(app), m_app(app), m_map(0
 	m_map = new Map(tileSize.x, tileSize.y);
 
 	// Background layer
-	Layer* backgroundLayer = new Layer(m_map, "Background", 1.0f, true, false);
+	backgroundLayer = new Layer(m_map, "Background", 1.0f, true, false);
 
 	m_map->addLayer(Map::BACKGROUND0, backgroundLayer);
 
@@ -21,7 +21,7 @@ MainMenuState::MainMenuState(GameApp* app) : GameState(app), m_app(app), m_map(0
 	backgroundLayer->addGameObject(backgroundGameObject);
 
 	// Objects layer
-	Layer* objectsLayer = new Layer(m_map, "Objects", 1.0f, true, false);
+	objectsLayer = new Layer(m_map, "Objects", 1.0f, true, false);
 
 	m_map->addLayer(Map::MAPLAYER0, objectsLayer);
 
@@ -35,17 +35,17 @@ MainMenuState::MainMenuState(GameApp* app) : GameState(app), m_app(app), m_map(0
 	startButtonObject->setPosition(vec2(1, 1));
 
 	// Create new start button object, and clip it from texture postion <0,52> - <200, 104>, white color shall be transparent
-	GameObject* exitButtonObjects = createSpriteGameObject("buttons.png", tileSize.x, tileSize.y, 0, 52, 400, 104, true);
+	GameObject* exitButtonObject = createSpriteGameObject("buttons.png", tileSize.x*2.0f, tileSize.y, 0, 52, 200, 104, true);
 
 	// Add exit button to level
-	objectsLayer->addGameObject(exitButtonObjects);
+	objectsLayer->addGameObject(exitButtonObject);
 
 	// Set exit button position
-	exitButtonObjects->setPosition(vec2(2, 2));
+	exitButtonObject->setPosition(vec2(2, 2));
 
 	// Setting object names
 	startButtonObject->setName("Start");
-	exitButtonObjects->setName("Exit");
+	exitButtonObject->setName("Exit");
 }
 
 GameObject* MainMenuState::createSpriteGameObject(const std::string& bitmapFileName, float sizeX, float sizeY, bool isWhiteTransparentColor = false)
@@ -135,8 +135,6 @@ bool MainMenuState::update(ESContext* ctx, float deltaTime)
 			esLogMessage("Object not picked!");
 		}
 	}
-	
-
 
 	// Update map. this will update all GameObjects inside a map layers.
 	m_map->update(deltaTime);
