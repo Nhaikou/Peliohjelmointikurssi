@@ -34,7 +34,7 @@ MainMenuState::MainMenuState(GameApp* app) : GameState(app), m_app(app), m_map(0
 	// Set start button position
 	startButtonObject->setPosition(vec2(-0.5, 2));
 
-	// Create new start button object, and clip it from texture postion <0,52> - <200, 104>, white color shall be transparent
+	// Create new start button object, and clip it from texture postion <0,52> - <200, 52>, white color shall be transparent
 	GameObject* exitButtonObject = createSpriteGameObject("buttons.png", tileSize.x, tileSize.y, 0, 52, 200, 52, true);
 
 	// Add exit button to level

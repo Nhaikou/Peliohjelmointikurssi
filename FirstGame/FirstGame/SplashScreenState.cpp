@@ -52,7 +52,7 @@ bool SplashScreenState::update(ESContext* ctx, float deltaTime)
 		// Add sprite. Rotate it according to total time. We need also scale font a bit (100 times, so the sprite is 100x100 pixels).
 		m_batch->addSprite(m_texture, m_sprite, vec2(0, 0), 0, vec2(300 * m_count, 300 * m_count));
 		// Add text to position
-		m_batch->addText(m_fontTexture, m_text, vec2(-ctx->width / 4, ctx->height / 3), 0);
+		m_batch->addText(m_fontTexture, m_text, vec2(-ctx->width / 50, ctx->height / 2.5), 0);
 	}
 	else
 	{
