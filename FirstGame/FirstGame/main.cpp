@@ -42,16 +42,16 @@ void draw(ESContext *esContext)
 // update game
 void update(ESContext* ctx, float deltaTime)
 {
-	game->update(ctx, deltaTime);
-	if (false)
-	{
-		esQuitApp(ctx);
-	}
-
-	/*count += deltaTime;
+	count += deltaTime;
 
 	if (count > 1.0f)
-		count = 0.0f;*/
+		count = 0.0f;
+
+	game->update(ctx, deltaTime);
+	//if (false)
+	//{
+	//	esQuitApp(ctx);
+	//}
 }
 
 //extern "C" void app_dummy();

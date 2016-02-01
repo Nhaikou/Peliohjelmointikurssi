@@ -19,10 +19,16 @@ class GameState : public Object
 {
 
 public:
+	
+	GameState(GameApp* app) : Object(), m_app(app)
+	{
+
+	}
 	virtual~GameState(){}
 
 	virtual bool update(ESContext* ctx, float deltaTime)
 	{
+		assert(m_app != 0);
 		return true;
 	}
 	virtual void render(ESContext* ctx)
@@ -30,19 +36,10 @@ public:
 
 	}
 
-protected:
-	GameState(GameApp* app){}
-
-
-	Ref<Texture>openGLTexture = 0;
-	Ref<Text>text = 0;
-	Ref<Texture>fontTexture = 0;
-	Ref<Sprite>sprite = 0;
-	Ref<SpriteBatchGroup>batch = 0;
-	Ref<SpriteSheet>font = 0;
-
-
-	GameApp* getApp(){ return m_app; };
+	GameApp* getApp()
+	{
+		return m_app;
+	};
 
 private:
 	GameApp* m_app;

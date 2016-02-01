@@ -6,37 +6,27 @@ SplashScreenState::SplashScreenState(GameApp* app) : GameState(app), m_app(app)
 	int cc = 0;
 	esLogMessage("Init... %d", cc++);
 	// Create new sprite batch group. This must be deleted at deinit.
-	batch = new SpriteBatchGroup();
+	m_batch = new SpriteBatchGroup();
 
 	esLogMessage("Init... %d", cc++);
 	// Load OpenGL logo to be used as texture for sprite.
-	openGLTexture = new Texture("meepo2_splash.png");
+	m_texture = new Texture("meepo.png");
 
 	esLogMessage("Init... %d", cc++);
 	// Create new sprite, with default parameters.
-	sprite = new Sprite(0);
+	m_sprite = new Sprite(0);
 
 	esLogMessage("Init... %d", cc++);
 	// Load font texture. Made with font creation tool like bitmap font builder.
-	fontTexture = new Texture("Fixedsys_24_Bold.png");
+	m_fontTexture = new Texture("Fixedsys_24_Bold.png");
 
 	esLogMessage("Init... %d", cc++);
 	// Create font clip areas (sprite sheet), from dat file and texture. Dat-file is made with bitmap font builder.
-	font = SpriteSheet::autoFindFontFromTexture(fontTexture, "Fixedsys_24_Bold.dat");
+	m_font = SpriteSheet::autoFindFontFromTexture(m_fontTexture, "Fixedsys_24_Bold.dat");
 
 	esLogMessage("Init... %d", cc++);
 	// Create new text-object
-	text = new Text(0, font);
-
-	esLogMessage("Init... Done");
-
-	batch = new SpriteBatchGroup();
-
-	openGLTexture = new Texture("meepo_splash.png");
-
-	m_sprite = new Sprite(0);
-
-	//sprite = new Sprite(0);
+	m_text = new Text(0, m_font);
 
 }
 
@@ -48,25 +38,25 @@ SplashScreenState::~SplashScreenState()
 
 bool SplashScreenState::update(ESContext* ctx, float deltaTime)
 {
-	//esLogMessage(__FUNCTION__);
-	// Update total time counter.
-	//count += deltaTime;
+	m_totalTime += deltaTime;
+	m_count += deltaTime;
 
 	// Set text.
-	text->setText("Ain't NOTHING gonna stop US now!!");
+	m_text->setText("Ain't NOTHING gonna stop US now!!");
 
 	// Clear sprite before add new dynamic sprites.
-	batch->clear();
+	m_batch->clear();
 
-	// Add sprite. Rotate it according to total time. We need also scale font a bit (100 times, so the sprite is 100x100 pixels).
-	batch->addSprite(openGLTexture, sprite, vec2(0, 0), 0, vec2(1280, 720));
-
-	// Add text to position -400,300
-	batch->addText(fontTexture, text, vec2(-ctx->width / 4, ctx->height / 3), 0);
-	m_totalTime += deltaTime;
-	if (m_totalTime > 3.0f)
+	if (m_totalTime <= 3.0f)
 	{
-		//MenuState* menu = new MenuState(getApp());
+		// Add sprite. Rotate it according to total time. We need also scale font a bit (100 times, so the sprite is 100x100 pixels).
+		m_batch->addSprite(m_texture, m_sprite, vec2(0, 0), 0, vec2(300 * m_count, 300 * m_count));
+		// Add text to position
+		m_batch->addText(m_fontTexture, m_text, vec2(-ctx->width / 4, ctx->height / 3), 0);
+	}
+	else
+	{
+		//MainMenuState* m_menu = new MainMenuState(getApp());
 		getApp()->setState(new MainMenuState(getApp()));
 		return true;
 	}
@@ -76,7 +66,7 @@ bool SplashScreenState::update(ESContext* ctx, float deltaTime)
 void SplashScreenState::render(ESContext* ctx)
 {
 	// Set OpenGL clear color
-	glClearColor(0.5f, 0.5f, 0.5f, 1.0f);
+	glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
 
 	// Clear the color buffer
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
@@ -114,5 +104,5 @@ void SplashScreenState::render(ESContext* ctx)
 	glLoadIdentity();
 
 	// Draw batched objects to screen.
-	batch->render();
+	m_batch->render();
 }

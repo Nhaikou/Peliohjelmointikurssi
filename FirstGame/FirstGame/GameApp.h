@@ -1,5 +1,6 @@
 #pragma once
 #include "Object.h"
+#include "es_util.h"
 #include "Ref.h"
 #include "GameState.h"
 

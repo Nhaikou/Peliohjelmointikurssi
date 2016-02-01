@@ -3,6 +3,7 @@
 
 MainMenuState::MainMenuState(GameApp* app) : GameState(app), m_app(app)
 {
+	
 }
 
 

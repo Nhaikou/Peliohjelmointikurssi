@@ -1,18 +1,19 @@
 #include "GameApp.h"
 
 
-GameApp::GameApp()
+GameApp::GameApp() : Object(), m_currentState(0)
 {
 }
 
 
 GameApp::~GameApp()
 {
+	delete m_currentState;
 }
 
 bool GameApp::update(ESContext* ctx, float deltaTime)
 {
-	m_currentState->update(ctx, deltaTime);
+	return m_currentState->update(ctx, deltaTime);
 	return true;
 }
 
