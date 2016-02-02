@@ -34,7 +34,6 @@ void deinit(ESContext *esContext)
 void draw(ESContext *esContext)
 {
 	m_app->render(esContext);
-	//splash->render(esContext);
 }
 
 
