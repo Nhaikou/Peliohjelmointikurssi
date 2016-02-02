@@ -1,6 +1,7 @@
 #pragma once
 #include "es_util.h"
 #include "GameState.h"
+#include "GameRunningState.h"
 #include "Map.h"
 #include "Input.h"
 #include "TileComponent.h"
@@ -25,5 +26,6 @@ private:
 	GameApp* m_app;
 	Ref<Map> m_map;
 	Ref<Layer> backgroundLayer, objectsLayer;
+	Ref<GameObject> pickedObject;
 };
 

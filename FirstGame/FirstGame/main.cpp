@@ -17,7 +17,8 @@ namespace
 bool init(ESContext *esContext)
 {
 	m_app = new GameApp();
-	m_app->setState(new SplashScreenState(m_app));
+	SplashScreenState* splash = new SplashScreenState(m_app);
+	m_app->setState(splash);
 	return true;
 }
 

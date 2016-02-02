@@ -30,12 +30,6 @@ SplashScreenState::SplashScreenState(GameApp* app) : GameState(app), m_app(app)
 
 }
 
-
-SplashScreenState::~SplashScreenState()
-{
-	
-}
-
 bool SplashScreenState::update(ESContext* ctx, float deltaTime)
 {
 	m_totalTime += deltaTime;
@@ -56,11 +50,11 @@ bool SplashScreenState::update(ESContext* ctx, float deltaTime)
 	}
 	else
 	{
-		//MainMenuState* m_menu = new MainMenuState(getApp());
+		// Change to main menu state
 		getApp()->setState(new MainMenuState(getApp()));
 		return true;
 	}
-	return true;
+	//return true;
 }
 
 void SplashScreenState::render(ESContext* ctx)
@@ -105,4 +99,9 @@ void SplashScreenState::render(ESContext* ctx)
 
 	// Draw batched objects to screen.
 	m_batch->render();
+}
+
+SplashScreenState::~SplashScreenState()
+{
+
 }

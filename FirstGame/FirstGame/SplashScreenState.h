@@ -14,7 +14,7 @@ public:
 private:
 	float m_totalTime = 0;
 	float m_count = 0;
-	GameApp *m_app;
+	GameApp* m_app;
 	Ref<Texture> m_texture = 0;
 	Ref<Text> m_text = 0;
 	Ref<Texture> m_fontTexture = 0;
