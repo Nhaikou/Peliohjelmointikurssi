@@ -4,7 +4,7 @@
 class GameRunningState : public GameState
 {
 public:
-	GameRunningState();
+	GameRunningState(GameApp* app);
 	virtual~GameRunningState();
 
 	virtual bool update(ESContext* ctx, float deltaTime);
