@@ -3,11 +3,14 @@
 #include "es_util.h"
 #include "Ref.h"
 #include "Map.h"
+#include "Camera.h"
 #include "Input.h"
+#include "Layer.h"
 #include "SpriteBatch.h"
 #include "Sprite.h"
 #include "Text.h"
 #include "SpriteSheet.h"
+#include "SpriteComponent.h"
 #include "Texture.h"
 #include "GameApp.h"
 
@@ -28,7 +31,7 @@ public:
 
 	virtual bool update(ESContext* ctx, float deltaTime)
 	{
-		assert(m_app != 0);
+		//assert(m_app != 0);
 		return true;
 	}
 	virtual void render(ESContext* ctx)

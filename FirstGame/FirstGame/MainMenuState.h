@@ -2,13 +2,6 @@
 #include "es_util.h"
 #include "GameState.h"
 #include "GameRunningState.h"
-#include "Map.h"
-#include "Input.h"
-#include "TileComponent.h"
-#include "SpriteComponent.h"
-#include "Layer.h"
-#include "Camera.h"
-#include <iostream>
 
 class MainMenuState : public GameState
 {
