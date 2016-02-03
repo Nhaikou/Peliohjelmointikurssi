@@ -4,7 +4,7 @@
 MainMenuState::MainMenuState(GameApp* app) : GameState(app), m_app(app), m_map(0), backgroundLayer(0), objectsLayer(0)
 {
 	// Tile size
-	vec2 tileSize(200.0f, 52.0f);
+	vec2 tileSize(64.0f, 64.0f);
 
 	// Create new map, with width == tile, heigh == 32pixels/tile
 	m_map = new Map(tileSize.x, tileSize.y);
@@ -26,10 +26,12 @@ MainMenuState::MainMenuState(GameApp* app) : GameState(app), m_app(app), m_map(0
 	m_map->addLayer(Map::MAPLAYER0, objectsLayer);
 
 	// Create new start button object, and clip it from texture postion <0,0> - <200, 52>, white color shall be transparent
-	GameObject* startButtonObject = createSpriteGameObject("buttons2.png", tileSize.x, tileSize.y, 0, 0, 200, 52, false);
+	GameObject* startButtonObject = createSpriteGameObject("buttons2.png", 200.0f, 52.0f, 0, 0, 200, 52, false);
 	
 	// Add start button to level
 	objectsLayer->addGameObject(startButtonObject);
+	// Set button size
+	//startButtonObject->setSize(tileSize.x / 2.0, tileSize.y / 2.0);
 
 	// Set start button position
 	startButtonObject->setPosition(vec2(0, 2));
@@ -38,10 +40,13 @@ MainMenuState::MainMenuState(GameApp* app) : GameState(app), m_app(app), m_map(0
 	startButtonObject->setName("Start");
 
 	// Create new start button object, and clip it from texture postion <200,0> - <200, 52>, white color shall be transparent
-	GameObject* exitButtonObject = createSpriteGameObject("buttons2.png", tileSize.x, tileSize.y, 200, 0, 200, 52, false);
+	GameObject* exitButtonObject = createSpriteGameObject("buttons2.png", 200.0f, 52.0f, 200, 0, 200, 52, false);
 
 	// Add exit button to level
 	objectsLayer->addGameObject(exitButtonObject);
+
+	// Set button size
+	//exitButtonObject->setSize(tileSize.x / 2.0, tileSize.y / 2.0);
 
 	// Set exit button position
 	exitButtonObject->setPosition(vec2(0, 4));
@@ -117,24 +122,27 @@ bool MainMenuState::update(ESContext* ctx, float deltaTime)
 	// Convert mouse coordinates to map coordinates.
 	vec2 mouseInMapCoordinates = m_map->screenToMapCoordinates(mouseX, mouseY);
 	
+
+	esLogMessage("Mouse in map: <%2.2f, %2.2f>", mouseInMapCoordinates.x, mouseInMapCoordinates.y);
+
 	GameObject* pickedObject = m_map->getLayer("Objects")->pick(mouseInMapCoordinates);
 
 	std::string start = "Start";
 	std::string exit = "Exit";
 
-	if (pickedObject != nullptr)
+	if (pickedObject != 0)
 	{
 		std::string test1 = pickedObject->getName();
-		if (test1.compare(start) == 0 && getMouseButtonState(MOUSE_LEFT))
+		if (test1.compare(start) == 0 || getMouseButtonState(MOUSE_LEFT))
 		{
 			esLogMessage("Object %s picked!", pickedObject->getName().c_str());
-			getApp()->setState(new GameRunningState(getApp()));
+			//getApp()->setState(new GameRunningState(getApp()));
 			return true;
 		}
-		else if (test1.compare(exit) == 0 && getMouseButtonState(MOUSE_LEFT))
+		else if (test1.compare(exit) == 0 || getMouseButtonState(MOUSE_LEFT))
 		{
 			esLogMessage("Object %s picked!", pickedObject->getName().c_str());
-			return false;
+			//return false;
 		}
 	}
 	else
