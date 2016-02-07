@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" renderorder="right-down" width="20" height="12" tilewidth="64" tileheight="64" nextobjectid="1">
+ <tileset firstgid="1" name="BreakoutObjects" tilewidth="64" tileheight="64" tilecount="40" columns="8">
+  <image source="../objects.png" trans="ffffff" width="512" height="324"/>
+ </tileset>
+ <tileset firstgid="41" name="BreakoutObjects" tilewidth="64" tileheight="64" tilecount="40" columns="8">
+  <image source="../objects.png" trans="ffffff" width="512" height="324"/>
+ </tileset>
+ <layer name="Background" width="20" height="12">
+  <data encoding="base64" compression="zlib">
+   eJxjYBgFo2AUDFUAAAPAAAE=
+  </data>
+ </layer>
+ <layer name="Objects" width="20" height="12">
+  <data encoding="base64" compression="zlib">
+   eJxjYmBgYKIyphagtXksZOJR86gDhot5PFQ2j1gAMgsA0XYBQQ==
+  </data>
+ </layer>
+</map>
