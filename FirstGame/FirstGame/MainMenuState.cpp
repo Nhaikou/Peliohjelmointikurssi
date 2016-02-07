@@ -123,7 +123,7 @@ bool MainMenuState::update(ESContext* ctx, float deltaTime)
 	vec2 mouseInMapCoordinates = m_map->screenToMapCoordinates(mouseX, mouseY);
 	
 
-	esLogMessage("Mouse in map: <%2.2f, %2.2f>", mouseInMapCoordinates.x, mouseInMapCoordinates.y);
+	//esLogMessage("Mouse in map: <%2.2f, %2.2f>", mouseInMapCoordinates.x, mouseInMapCoordinates.y);
 
 	GameObject* pickedObject = m_map->getLayer("Objects")->pick(mouseInMapCoordinates);
 
@@ -133,16 +133,16 @@ bool MainMenuState::update(ESContext* ctx, float deltaTime)
 	if (pickedObject != 0)
 	{
 		std::string test1 = pickedObject->getName();
-		if (test1.compare(start) == 0 || getMouseButtonState(MOUSE_LEFT))
+		if (test1.compare(start) == 0 && getMouseButtonState(MOUSE_LEFT))
 		{
-			esLogMessage("Object %s picked!", pickedObject->getName().c_str());
-			//getApp()->setState(new GameRunningState(getApp()));
+			esLogMessage("%s pressed!", pickedObject->getName().c_str());
+			getApp()->setState(new GameRunningState(getApp()));
 			return true;
 		}
-		else if (test1.compare(exit) == 0 || getMouseButtonState(MOUSE_LEFT))
+		else if (test1.compare(exit) == 0 && getMouseButtonState(MOUSE_LEFT))
 		{
-			esLogMessage("Object %s picked!", pickedObject->getName().c_str());
-			//return false;
+			esLogMessage("%s pressed!", pickedObject->getName().c_str());
+			return false;
 		}
 	}
 	else
@@ -169,6 +169,5 @@ void MainMenuState::render(ESContext* ctx)
 
 MainMenuState::~MainMenuState()
 {
-	// Delete map
-	//delete m_map;
+	
 }
