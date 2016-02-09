@@ -15,7 +15,7 @@ MainMenuState::MainMenuState(GameApp* app) : GameState(app), m_app(app), m_map(0
 	m_map->addLayer(Map::BACKGROUND0, backgroundLayer);
 
 	// Create new sprite GameObject from texture (background sprite) size is same than screen size.
-	GameObject* backgroundGameObject = createSpriteGameObject("meepobackground.png", 1280.0f, 720.0f, false);
+	GameObject* backgroundGameObject = createSpriteGameObject("assets/meepobackground.png", 1280.0f, 720.0f, false);
 
 	// Add GameObject to background layer.
 	backgroundLayer->addGameObject(backgroundGameObject);
@@ -26,7 +26,7 @@ MainMenuState::MainMenuState(GameApp* app) : GameState(app), m_app(app), m_map(0
 	m_map->addLayer(Map::MAPLAYER0, objectsLayer);
 
 	// Create new start button object, and clip it from texture postion <0,0> - <200, 52>, white color shall be transparent
-	GameObject* startButtonObject = createSpriteGameObject("buttons2.png", 200.0f, 52.0f, 0, 0, 200, 52, false);
+	GameObject* startButtonObject = createSpriteGameObject("assets/buttons2.png", 200.0f, 52.0f, 0, 0, 200, 52, false);
 	
 	// Add start button to level
 	objectsLayer->addGameObject(startButtonObject);
@@ -40,7 +40,7 @@ MainMenuState::MainMenuState(GameApp* app) : GameState(app), m_app(app), m_map(0
 	startButtonObject->setName("Start");
 
 	// Create new start button object, and clip it from texture postion <200,0> - <200, 52>, white color shall be transparent
-	GameObject* exitButtonObject = createSpriteGameObject("buttons2.png", 200.0f, 52.0f, 200, 0, 200, 52, false);
+	GameObject* exitButtonObject = createSpriteGameObject("assets/buttons2.png", 200.0f, 52.0f, 200, 0, 200, 52, false);
 
 	// Add exit button to level
 	objectsLayer->addGameObject(exitButtonObject);

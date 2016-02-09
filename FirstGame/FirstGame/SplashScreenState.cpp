@@ -10,7 +10,7 @@ SplashScreenState::SplashScreenState(GameApp* app) : GameState(app), m_app(app)
 
 	esLogMessage("Init... %d", cc++);
 	// Load OpenGL logo to be used as texture for sprite.
-	m_texture = new Texture("meepo.png");
+	m_texture = new Texture("assets/meepo.png");
 
 	esLogMessage("Init... %d", cc++);
 	// Create new sprite, with default parameters.
@@ -18,11 +18,11 @@ SplashScreenState::SplashScreenState(GameApp* app) : GameState(app), m_app(app)
 
 	esLogMessage("Init... %d", cc++);
 	// Load font texture. Made with font creation tool like bitmap font builder.
-	m_fontTexture = new Texture("Fixedsys_24_Bold.png");
+	m_fontTexture = new Texture("assets/Fixedsys_24_Bold.png");
 
 	esLogMessage("Init... %d", cc++);
 	// Create font clip areas (sprite sheet), from dat file and texture. Dat-file is made with bitmap font builder.
-	m_font = SpriteSheet::autoFindFontFromTexture(m_fontTexture, "Fixedsys_24_Bold.dat");
+	m_font = SpriteSheet::autoFindFontFromTexture(m_fontTexture, "assets/Fixedsys_24_Bold.dat");
 
 	esLogMessage("Init... %d", cc++);
 	// Create new text-object
@@ -54,7 +54,6 @@ bool SplashScreenState::update(ESContext* ctx, float deltaTime)
 		getApp()->setState(new MainMenuState(getApp()));
 		return true;
 	}
-	//return true;
 }
 
 void SplashScreenState::render(ESContext* ctx)

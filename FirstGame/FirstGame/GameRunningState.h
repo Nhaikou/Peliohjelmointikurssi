@@ -2,7 +2,6 @@
 #include "GameState.h"
 #include "MainMenuState.h"
 #include "MyGameComponentFactory.h"
-#include <iostream>
 
 class GameRunningState : public GameState
 {
@@ -18,8 +17,8 @@ public:
 	
 private:
 	float deltaTime = 0;
-	Ref<TmxMap> m_tmap;
-	MyGameComponentFactory* m_componentFactory = 0;
 	float zoom = 1.0f;
+	Ref<TmxMap> m_tmap;
+	MyGameComponentFactory* m_componentFactory;
 };
 

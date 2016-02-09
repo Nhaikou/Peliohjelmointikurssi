@@ -14,6 +14,8 @@
 #include "Texture.h"
 #include "GameApp.h"
 #include "PropertySet.h"
+#include "TileComponent.h"
+#include <iostream>
 
 class GameApp;
 
