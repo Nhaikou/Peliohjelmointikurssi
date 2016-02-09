@@ -1,19 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" orientation="orthogonal" renderorder="right-down" width="20" height="12" tilewidth="64" tileheight="64" nextobjectid="1">
+<map version="1.0" orientation="orthogonal" renderorder="right-down" width="20" height="12" tilewidth="64" tileheight="64" nextobjectid="20">
  <tileset firstgid="1" name="BreakoutObjects" tilewidth="64" tileheight="64" tilecount="40" columns="8">
   <image source="../objects.png" trans="ffffff" width="512" height="324"/>
  </tileset>
- <tileset firstgid="41" name="BreakoutObjects" tilewidth="64" tileheight="64" tilecount="40" columns="8">
-  <image source="../objects.png" trans="ffffff" width="512" height="324"/>
- </tileset>
+ <tileset firstgid="41" source="ExternalTilemap.tsx"/>
  <layer name="Background" width="20" height="12">
   <data encoding="base64" compression="zlib">
-   eJxjYBgFo2AUDFUAAAPAAAE=
+   eJxjYmBgYKIyphYYNW/UvFHz8JsHAN/IAFU=
   </data>
  </layer>
  <layer name="Objects" width="20" height="12">
   <data encoding="base64" compression="zlib">
-   eJxjYmBgYKIyphagtXksZOJR86gDhot5PFQ2j1gAMgsA0XYBQQ==
+   eJxjYBi5wJBMGhcwJZPGBSzJpEfByAEANNIEWg==
   </data>
  </layer>
+ <objectgroup name="DynamicObjects">
+  <object id="12" name="PlayerPad" type="PlayerPad" gid="47" x="576" y="768" width="128" height="64"/>
+  <object id="17" name="Ball" type="Ball" gid="15" x="610" y="704" width="64" height="64"/>
+ </objectgroup>
+ <objectgroup name="StaticColliders">
+  <object id="3" name="TopWall" type="StaticColliders" x="0" y="-1" width="1280" height="64"/>
+  <object id="4" name="LeftWall" type="StaticColliders" x="0" y="63" width="64" height="706"/>
+  <object id="5" name="RightWall" type="StaticColliders" x="1216" y="64" width="66" height="704"/>
+  <object id="6" name="Bottom" type="StaticColliders" x="-1" y="760" width="1284" height="49"/>
+ </objectgroup>
 </map>

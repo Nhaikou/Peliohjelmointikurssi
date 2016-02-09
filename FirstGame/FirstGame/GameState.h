@@ -13,6 +13,7 @@
 #include "SpriteComponent.h"
 #include "Texture.h"
 #include "GameApp.h"
+#include "PropertySet.h"
 
 class GameApp;
 
