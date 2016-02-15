@@ -3,7 +3,7 @@
  <tileset firstgid="1" name="BreakoutObjects" tilewidth="64" tileheight="64" tilecount="40" columns="8">
   <image source="objects.png" trans="ffffff" width="512" height="324"/>
  </tileset>
- <tileset firstgid="41" source="ExternalTilemap.tsx"/>
+ <tileset firstgid="41" source="assets/ExternalTilemap.tsx"/>
  <layer name="Background" width="20" height="12">
   <data encoding="base64" compression="zlib">
    eJxjYmBgYKIyphYYNW/UvFHz8JsHAN/IAFU=
