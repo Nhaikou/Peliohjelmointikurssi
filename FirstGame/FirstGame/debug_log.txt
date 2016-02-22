@@ -1,0 +1,10 @@
+SplashScreenState::SplashScreenState
+Init... 0
+Init... 1
+Init... 2
+Init... 3
+Init... 4
+Init... 5
+Start pressed!
+Initializing Level 1!
+Deinit
