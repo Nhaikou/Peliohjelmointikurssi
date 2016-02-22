@@ -1,5 +1,6 @@
 #pragma once
 #include "GameState.h"
+#include "PlayerController.h"
 
 class MyGameComponentFactory : public DefaultComponentFactory
 {
@@ -11,4 +12,5 @@ public:
 	virtual Entity* createNewEntity(ComponentFactory* m_componentFactory, const std::string& type, Entity* parent, const PropertySet& properties);
 private:
 	Ref<GameObject> m_gameObject;
+	Ref<Map> m_map;
 };

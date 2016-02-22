@@ -15,8 +15,8 @@
   </data>
  </layer>
  <objectgroup name="DynamicObjects">
-  <object id="17" name="Ball" type="Ball" gid="15" x="608" y="640" width="64" height="64"/>
-  <object id="20" name="PlayerPad" type="PlayerPad" gid="47" x="64" y="704" width="128" height="64"/>
+  <object id="17" name="Ball" type="Ball" gid="15" x="608" y="704" width="64" height="64"/>
+  <object id="20" name="PlayerPad" type="PlayerPad" gid="47" x="576" y="768" width="128" height="64"/>
  </objectgroup>
  <objectgroup name="StaticColliders">
   <object id="3" name="TopWall" type="StaticColliders" x="0" y="-1" width="1280" height="64"/>

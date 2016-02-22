@@ -1,8 +1,8 @@
 #include "GameRunningState.h"
 
-GameRunningState::GameRunningState(GameApp* app) : GameState(app), m_tmap(0), m_componentFactory(0)
+GameRunningState::GameRunningState(GameApp* app) : GameState(app), m_tmap(0), m_componentFactory(0), m_gameObject(0)
 {
-	esLogMessage("Initializing Level 1!");	
+	esLogMessage("Initializing Level 1!");
 	m_tmap = new TmxMap();
 	m_componentFactory = new MyGameComponentFactory();
 
@@ -12,42 +12,13 @@ GameRunningState::GameRunningState(GameApp* app) : GameState(app), m_tmap(0), m_
 	{
 		m_tmap->getCamera()->setPosition(vec2(m_tmap->getWidth() / 2.0f - 0.5f, m_tmap->getHeight() / 2.0f - 0.5f));
 	}
+
+	// Create new PlayerPad entity
+	GameObject* playerPad = (GameObject*)m_componentFactory->createNewEntity(m_componentFactory, "PlayerPad", 0, PropertySet());
+	m_tmap->getLayer("DynamicObjects")->addGameObject(playerPad);
 }
 
 
-GameObject* GameRunningState::createSpriteGameObject(const std::string& bitmapFileName, float sizeX, float sizeY, int clipStartX, int clipStartY, int clipSizeX, int clipSizeY, bool isWhiteTransparentColor = false)
-{
-	// Load texture to be used as texture for sprite.
-	Texture* texture = new Texture(bitmapFileName.c_str());
-
-	// If user wants to create texture which white coros is treated as atransparent color.
-	if (isWhiteTransparentColor)
-	{
-		// Set white to transparent. Here color values are from 0 to 255 (RGB)
-		texture->setTransparentColor(255, 255, 255);
-	}
-
-	// Create new sprite GameObject from texture.
-	GameObject* gameObject = new GameObject(0, 0);
-	SpriteComponent* sprite = new SpriteComponent(gameObject, texture);
-
-	// Resize the sprite to be correct size
-	gameObject->setSize(sizeX, sizeY);
-
-	// Specify clip area by start point and size in pixels
-	Sprite::PixelClip clip;
-	clip.topLeft.x = clipStartX;
-	clip.topLeft.y = clipStartY;
-	clip.clipSize.x = clipSizeX;
-	clip.clipSize.y = clipSizeY;
-
-	// Set pixel clip for sprite
-	sprite->getSprite()->setClip(float(texture->getWidth()), float(texture->getHeight()), clip);
-
-	// Add sprite component to game object
-	gameObject->addComponent(sprite);
-	return gameObject;
-}
 
 float GameRunningState::getZoom()
 {
@@ -69,6 +40,7 @@ bool GameRunningState::update(ESContext* ctx, float deltaTime)
 		return true;
 		//return false;
 	}
+
 	m_tmap->update(deltaTime);
 	return true;
 }

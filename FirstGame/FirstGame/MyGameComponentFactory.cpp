@@ -1,6 +1,6 @@
 #include "MyGameComponentFactory.h"
 
-MyGameComponentFactory::MyGameComponentFactory() : DefaultComponentFactory(), m_gameObject(0)
+MyGameComponentFactory::MyGameComponentFactory() : DefaultComponentFactory(), m_gameObject(0), m_map(0)
 {
 
 }
@@ -33,6 +33,11 @@ Entity* MyGameComponentFactory::createNewEntity(ComponentFactory* m_componentFac
 	{
 		m_gameObject = new GameObject(parent, properties);
 		m_gameObject->addComponent(m_componentFactory->createNewComponent("Tile", m_gameObject, properties));
+		m_gameObject = m_map->findGameObjectByName("PlayerPad");
+		assert(m_gameObject != 0);
+		PlayerController* playerController = new PlayerController(m_gameObject);
+		m_gameObject->addComponent(playerController);
+		m_gameObject->setName("PlayerPad");
 		return m_gameObject;
 	}
 
