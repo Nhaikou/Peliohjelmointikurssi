@@ -14,8 +14,8 @@ GameRunningState::GameRunningState(GameApp* app) : GameState(app), m_tmap(0), m_
 	}
 
 	// Create new PlayerPad entity
-	GameObject* playerPad = (GameObject*)m_componentFactory->createNewEntity(m_componentFactory, "PlayerPad", 0, PropertySet());
-	m_tmap->getLayer("DynamicObjects")->addGameObject(playerPad);
+	//GameObject* playerPad = (GameObject*)m_componentFactory->createNewEntity(m_componentFactory, "PlayerPad", 0, PropertySet());
+	//m_tmap->getLayer("DynamicObjects")->addGameObject(playerPad);
 }
 
 

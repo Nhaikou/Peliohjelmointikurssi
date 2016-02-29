@@ -1,6 +1,7 @@
 #include "PlayerController.h"
 
-PlayerController::PlayerController(GameObject* owner) : Component(owner, Component::getDefaultProperties())
+PlayerController::PlayerController(GameObject* owner)
+	: Component(owner, Component::getDefaultProperties())
 {
 }
 
@@ -11,28 +12,15 @@ PlayerController::~PlayerController(void)
 void PlayerController::update(float deltaTime)
 {
 	float moveSpeed = 4.0f;	//Tiles / second
-
+	vec2 direction;
 	// Get move direction from keyboard
 	
-	float right = float(getKeyState(KEY_RIGHT) - getKeyState(KEY_LEFT));
-	float left = float(getKeyState(KEY_LEFT) - getKeyState(KEY_RIGHT));
-
-	if (fabsf(right)>0.1f)
+	if (getKeyState(KEY_LEFT) && getGameObject()->getPosition().x>1.0f)
 	{
-		vec2 direction;
-
-		direction = slm::normalize(direction);
-
-		// Update position
-		getGameObject()->setPosition(getGameObject()->getPosition() + deltaTime*moveSpeed*direction);
+		getGameObject()->setPosition(getGameObject()->getPosition() + deltaTime*moveSpeed*vec2(-1.0f, 0.0f));
 	}
-	else if (fabsf(left)>-0.1f)
+	if (getKeyState(KEY_RIGHT) && getGameObject()->getPosition().x<17.0f)
 	{
-		vec2 direction;
-
-		direction = slm::normalize(direction);
-
-		// Update position
-		getGameObject()->setPosition(getGameObject()->getPosition() - deltaTime*moveSpeed*direction);
+		getGameObject()->setPosition(getGameObject()->getPosition() + deltaTime*moveSpeed*vec2(1.0f, 0.0f));
 	}
 }
