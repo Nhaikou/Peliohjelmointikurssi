@@ -15,6 +15,7 @@ void PlayerController::update(float deltaTime)
 	vec2 direction;
 	// Get move direction from keyboard
 	
+	// Position is counted by the size of 1 block e.g. (64 x 1.0f) 
 	if (getKeyState(KEY_LEFT) && getGameObject()->getPosition().x>1.0f)
 	{
 		getGameObject()->setPosition(getGameObject()->getPosition() + deltaTime*moveSpeed*vec2(-1.0f, 0.0f));

@@ -12,10 +12,6 @@ GameRunningState::GameRunningState(GameApp* app) : GameState(app), m_tmap(0), m_
 	{
 		m_tmap->getCamera()->setPosition(vec2(m_tmap->getWidth() / 2.0f - 0.5f, m_tmap->getHeight() / 2.0f - 0.5f));
 	}
-
-	// Create new PlayerPad entity
-	//GameObject* playerPad = (GameObject*)m_componentFactory->createNewEntity(m_componentFactory, "PlayerPad", 0, PropertySet());
-	//m_tmap->getLayer("DynamicObjects")->addGameObject(playerPad);
 }
 
 
@@ -32,13 +28,12 @@ void GameRunningState::setZoom(float newZoom)
 
 bool GameRunningState::update(ESContext* ctx, float deltaTime)
 {
-	setZoom(getZoom() + getMouseWheelDelta());
+	//setZoom(getZoom() + getMouseWheelDelta());
 
 	if (getKeyState(KEY_ESCAPE) == 1)
 	{
 		getApp()->setState(new MainMenuState(getApp()));
 		return true;
-		//return false;
 	}
 
 	m_tmap->update(deltaTime);
@@ -54,7 +49,8 @@ void GameRunningState::render(ESContext* ctx)
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
 	// Set screen size to camera.
-	m_tmap->getCamera()->setScreenSize(ctx->width, ctx->height, 200 / getZoom());
+	// Camera has a bug that width will be abnormal to the game itself
+	m_tmap->getCamera()->setScreenSize(ctx->width/0.95, ctx->height);
 
 	// Render map and all of its layers containing GameObjects to screen.
 	m_tmap->render();
