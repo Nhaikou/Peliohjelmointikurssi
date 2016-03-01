@@ -22,6 +22,9 @@ Entity* MyGameComponentFactory::createNewEntity(ComponentFactory* m_componentFac
 	{
 		m_gameObject = new GameObject(parent, properties);
 		m_gameObject->addComponent(m_componentFactory->createNewComponent("Tile", m_gameObject, properties));
+		BallController* ballController = new BallController(m_gameObject);
+		m_gameObject->addComponent(ballController);
+		m_gameObject->setName("Ball");
 		return m_gameObject;
 	}
 	else if ("Brick" == type)

@@ -1,6 +1,7 @@
 #pragma once
 #include "GameState.h"
 #include "PlayerController.h"
+#include "BallController.h"
 
 class MyGameComponentFactory : public DefaultComponentFactory
 {

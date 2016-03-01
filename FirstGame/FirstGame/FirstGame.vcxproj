@@ -82,6 +82,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="BallController.cpp" />
     <ClCompile Include="GameApp.cpp" />
     <ClCompile Include="GameRunningState.cpp" />
     <ClCompile Include="main.cpp" />
@@ -91,6 +92,7 @@
     <ClCompile Include="SplashScreenState.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="BallController.h" />
     <ClInclude Include="GameApp.h" />
     <ClInclude Include="GameRunningState.h" />
     <ClInclude Include="GameState.h" />
