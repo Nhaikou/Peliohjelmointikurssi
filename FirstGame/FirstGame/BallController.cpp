@@ -23,7 +23,7 @@ void BallController::update(float deltaTime)
 	if (movement == true)
 	{
 		getGameObject()->setPosition(getGameObject()->getPosition() + deltaTime*moveSpeed*vec2(1.0f, -1.0f));
-
+		
 	}
 	
 }

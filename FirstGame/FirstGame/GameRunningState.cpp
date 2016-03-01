@@ -36,6 +36,14 @@ bool GameRunningState::update(ESContext* ctx, float deltaTime)
 		return true;
 	}
 
+	for (int i = 0; i < m_tmap->getLayer("StaticColliders")->getGameObjects().size(); i++)
+	{	
+		if (m_tmap->findGameObjectByName("Ball")->collidesTo(m_tmap->getLayer("StaticColliders")->getGameObjects()[i]))
+		{
+			std::cout << "COLLIDE!" << std::endl;
+		}
+	}
+
 	m_tmap->update(deltaTime);
 	return true;
 }
