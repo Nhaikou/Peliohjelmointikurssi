@@ -35,14 +35,38 @@ bool GameRunningState::update(ESContext* ctx, float deltaTime)
 		getApp()->setState(new MainMenuState(getApp()));
 		return true;
 	}
-
+	slm::vec2 plaa = slm::vec2(0.0f);
 	for (int i = 0; i < m_tmap->getLayer("StaticColliders")->getGameObjects().size(); i++)
 	{	
-		if (m_tmap->findGameObjectByName("Ball")->collidesTo(m_tmap->getLayer("StaticColliders")->getGameObjects()[i]))
+		if (m_tmap->findGameObjectByName("Ball")->collidesTo(m_tmap->getLayer("StaticColliders")->getGameObjects()[i], &plaa))
 		{
-			std::cout << "COLLIDE!" << std::endl;
+			std::cout << plaa.x << " " << plaa.y << std::endl;
 		}
 	}
+
+	
+
+	// Read mouse values
+	if (getKeyState(KEY_A))
+	{
+		mouseX -= 0.01f;
+	}
+	if (getKeyState(KEY_D))
+	{
+		mouseX += 0.01f;
+	}
+	if (getKeyState(KEY_W))
+	{
+		mouseY -= 0.01f;
+	}
+	if (getKeyState(KEY_S))
+	{
+		mouseY += 0.01f;
+	}
+
+	slm::vec2 plaa2 = slm::vec2(mouseX, mouseY);
+	m_tmap->findGameObjectByName("Ball")->getComponent<BallController>()->setPositionToMouse(plaa2);
+
 
 	m_tmap->update(deltaTime);
 	return true;

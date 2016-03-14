@@ -23,6 +23,8 @@ public:
 		return (const GameObject*)getOwner();
 	}
 
+	void setPositionToMouse(slm::vec2 posMouse){ getGameObject()->setPosition(posMouse); }
+
 private:
 	bool movement = false;
 };

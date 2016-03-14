@@ -15,6 +15,7 @@ void BallController::update(float deltaTime)
 	
 	// 
 	vec2 direction;
+	vec2 position = vec2(3.0f, -1.0f);
 	if (getKeyState(KEY_SPACE) && !movement)
 	{
 		movement = true;
@@ -22,8 +23,15 @@ void BallController::update(float deltaTime)
 
 	if (movement == true)
 	{
-		getGameObject()->setPosition(getGameObject()->getPosition() + deltaTime*moveSpeed*vec2(1.0f, -1.0f));
+		getGameObject()->setPosition(getGameObject()->getPosition() + deltaTime*moveSpeed*position);
 		
+	}
+
+	// Returns ball position where it was first
+	if (getKeyState(KEY_RETURN))
+	{
+		movement = false;
+		return getGameObject()->setPosition(9,10); // Positions are 64x64 tiels
 	}
 	
 }
