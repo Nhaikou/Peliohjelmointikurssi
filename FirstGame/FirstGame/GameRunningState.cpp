@@ -40,32 +40,30 @@ bool GameRunningState::update(ESContext* ctx, float deltaTime)
 	{	
 		if (m_tmap->findGameObjectByName("Ball")->collidesTo(m_tmap->getLayer("StaticColliders")->getGameObjects()[i], &plaa))
 		{
-			std::cout << plaa.x << " " << plaa.y << std::endl;
+			m_tmap->findGameObjectByName("Ball")->getComponent<BallController>()->collisionCheck(m_tmap->getLayer("StaticColliders")->getGameObjects()[i], deltaTime);
 		}
 	}
-
 	
+	//// Read key values
+	//if (getKeyState(KEY_A))
+	//{
+	//	mouseX -= 0.01f;
+	//}
+	//if (getKeyState(KEY_D))
+	//{
+	//	mouseX += 0.01f;
+	//}
+	//if (getKeyState(KEY_W))
+	//{
+	//	mouseY -= 0.01f;
+	//}
+	//if (getKeyState(KEY_S))
+	//{
+	//	mouseY += 0.01f;
+	//}
 
-	// Read mouse values
-	if (getKeyState(KEY_A))
-	{
-		mouseX -= 0.01f;
-	}
-	if (getKeyState(KEY_D))
-	{
-		mouseX += 0.01f;
-	}
-	if (getKeyState(KEY_W))
-	{
-		mouseY -= 0.01f;
-	}
-	if (getKeyState(KEY_S))
-	{
-		mouseY += 0.01f;
-	}
-
-	slm::vec2 plaa2 = slm::vec2(mouseX, mouseY);
-	m_tmap->findGameObjectByName("Ball")->getComponent<BallController>()->setPositionToMouse(plaa2);
+	//slm::vec2 plaa2 = slm::vec2(mouseX, mouseY);
+	//m_tmap->findGameObjectByName("Ball")->getComponent<BallController>()->setPositionToMouse(plaa2);
 
 
 	m_tmap->update(deltaTime);

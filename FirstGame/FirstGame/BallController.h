@@ -3,7 +3,7 @@
 #include "SpriteComponent.h"
 #include "GameObject.h"
 #include "Input.h"
-
+#include <iostream>
 using namespace yam2d;
 
 class BallController : public Component, public Updatable
@@ -23,8 +23,16 @@ public:
 		return (const GameObject*)getOwner();
 	}
 
+	void collisionCheck(GameObject* objects, float deltaTime);
+
 	void setPositionToMouse(slm::vec2 posMouse){ getGameObject()->setPosition(posMouse); }
 
 private:
-	bool movement = false;
+	bool movement;
+	float moveSpeed;
+	float velocity;
+	vec2 direction;
+	vec2 position;
+	float positionX;
+	float positionY;
 };
