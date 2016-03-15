@@ -43,6 +43,13 @@ bool GameRunningState::update(ESContext* ctx, float deltaTime)
 			m_tmap->findGameObjectByName("Ball")->getComponent<BallController>()->collisionCheck(m_tmap->getLayer("StaticColliders")->getGameObjects()[i], deltaTime);
 		}
 	}
+	for (int i = 0; i < m_tmap->getLayer("DynamicObjects")->getGameObjects().size(); i++)
+	{
+		if (m_tmap->findGameObjectByName("Ball")->collidesTo(m_tmap->getLayer("DynamicObjects")->getGameObjects()[i], &plaa))
+		{
+			m_tmap->findGameObjectByName("Ball")->getComponent<BallController>()->collisionCheck(m_tmap->getLayer("DynamicObjects")->getGameObjects()[i], deltaTime);
+		}
+	}
 	
 	//// Read key values
 	//if (getKeyState(KEY_A))

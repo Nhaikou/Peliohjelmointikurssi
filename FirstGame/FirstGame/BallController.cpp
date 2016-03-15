@@ -47,12 +47,7 @@ void BallController::collisionCheck(GameObject* objects, float deltaTime)
 
 	if (movement)
 	{
-		if (objects->getName() == "RightWall")
-		{
-			position.x *= -1.0f;
-		}
-
-		if (objects->getName() == "LeftWall")
+		if (objects->getName() == "LeftWall" || objects->getName() == "RightWall")
 		{
 			position.x *= -1.0f;
 		}
@@ -62,6 +57,11 @@ void BallController::collisionCheck(GameObject* objects, float deltaTime)
 			position.y *= -1.0f;
 		}
 		if (objects->getName() == "Bottom")
+		{
+			movement = false;
+		}
+
+		if (objects->getName() == "PlayerPad")
 		{
 			position.y *= -1.0f;
 		}
