@@ -53,6 +53,18 @@ MainMenuState::MainMenuState(GameApp* app) : GameState(app), m_app(app), m_map(0
 
 	// Setting object names
 	exitButtonObject->setName("Exit");
+
+	// Create new secret game button object, and clip it from texture position <0,0> - <0,0> white color shall be transparent
+	GameObject* secretGameButton = createSpriteGameObject("assets/buttons3.png", 492.0f, 103.0f, 0, 0, 492, 103, false);
+
+	// Add game button to level
+	objectsLayer->addGameObject(secretGameButton);
+
+	// Set game button position
+	secretGameButton->setPosition(vec2(0, 3));
+	secretGameButton->setSize(secretGameButton->getSize() / vec2(2,2));
+
+	secretGameButton->setName("SecretGame");
 }
 
 GameObject* MainMenuState::createSpriteGameObject(const std::string& bitmapFileName, float sizeX, float sizeY, bool isWhiteTransparentColor = false)
@@ -129,6 +141,7 @@ bool MainMenuState::update(ESContext* ctx, float deltaTime)
 
 	std::string start = "Start";
 	std::string exit = "Exit";
+	std::string secretGame = "SecretGame";
 
 	if (pickedObject != 0)
 	{
@@ -137,6 +150,12 @@ bool MainMenuState::update(ESContext* ctx, float deltaTime)
 		{
 			esLogMessage("%s pressed!", pickedObject->getName().c_str());
 			getApp()->setState(new GameRunningState(getApp()));
+			return true;
+		}
+		else if (test1.compare(secretGame) == 0 && getMouseButtonState(MOUSE_LEFT))
+		{
+			esLogMessage("%s pressed!", pickedObject->getName().c_str());
+			getApp()->setState(new GameRunningState2(getApp()));
 			return true;
 		}
 		else if (test1.compare(exit) == 0 && getMouseButtonState(MOUSE_LEFT))
