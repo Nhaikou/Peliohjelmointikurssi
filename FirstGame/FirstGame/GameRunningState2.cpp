@@ -2,6 +2,8 @@
 
 GameRunningState2::GameRunningState2(GameApp* app) : GameState(app), m_tmap(0), m_gameObject(0)
 {
+	esLogMessage("Initializing secret level!");
+	m_tmap = new TmxMap();
 
 }
 
@@ -12,12 +14,13 @@ bool GameRunningState2::update(ESContext* ctx, float deltaTime)
 		getApp()->setState(new MainMenuState(getApp()));
 		return true;
 	}
+	return true;
 }
 
 void GameRunningState2::render(ESContext* ctx)
 {
 	// Set OpenGL clear color
-	glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
+	glClearColor(0.3f, 0.3f, 0.3f, 1.0f);
 
 	// Clear the color buffer
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
