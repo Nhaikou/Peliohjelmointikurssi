@@ -1,7 +1,7 @@
 #pragma once
 #include "GameState.h"
 #include "MainMenuState.h"
-#include "MyGameComponentFactory.h"
+#include "PongGameComponents.h"
 
 class GameRunningState2 : public GameState
 {
@@ -21,7 +21,7 @@ private:
 	Ref<TmxMap> m_tmap;
 	float mouseX = 0.0f;
 	float mouseY = 0.0f;
-	ComponentFactory* m_componentFactory;
+	PongGameComponents *m_pongComponents;
 
 };
 

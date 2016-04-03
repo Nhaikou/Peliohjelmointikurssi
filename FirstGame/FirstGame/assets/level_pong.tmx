@@ -1,16 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" orientation="orthogonal" renderorder="right-down" width="20" height="12" tilewidth="64" tileheight="64" nextobjectid="1">
+<map version="1.0" orientation="orthogonal" renderorder="right-down" width="20" height="12" tilewidth="64" tileheight="64" nextobjectid="24">
  <tileset firstgid="1" name="PongObjects" tilewidth="64" tileheight="64" tilecount="40" columns="8">
   <image source="pong_objects.png" trans="ffffff" width="512" height="324"/>
  </tileset>
+ <tileset firstgid="41" source="assets/PongPaddlesTileMap.tsx"/>
  <layer name="Background" width="20" height="12">
   <data encoding="base64" compression="zlib">
-   eJzjYGBg4KAiHgVDD/AMtANGEKBmXgNhAHMuAU0=
+   eJzjYGBg4KAiHgWjYBTgBtTMayAMAF5eAUE=
   </data>
  </layer>
- <layer name="Objects" width="20" height="12">
-  <data encoding="base64" compression="zlib">
-   eJxjYBgFo2AUDFUAAAPAAAE=
-  </data>
- </layer>
+ <objectgroup name="DynamicObjects">
+  <object id="20" name="Ball" type="Ball" gid="15" x="608" y="448" width="64" height="64"/>
+  <object id="21" name="PlayerPad1" type="PlayerPad1" gid="41" x="0" y="448" width="64" height="192"/>
+  <object id="22" name="PlayerPad2" type="PlayerPad2" gid="42" x="1216" y="448" width="64" height="192"/>
+ </objectgroup>
+ <objectgroup name="StaticColliders">
+  <object id="5" name="Top" type="StaticColliders" x="-1" y="1" width="1282" height="61"/>
+  <object id="8" name="Bottom" type="StaticColliders" x="0" y="705" width="1280" height="62"/>
+  <object id="11" name="Left" type="StaticColliders" x="-29" y="-2" width="38" height="772"/>
+  <object id="12" name="Right" type="StaticColliders" x="1270" y="-2" width="38" height="772"/>
+ </objectgroup>
 </map>

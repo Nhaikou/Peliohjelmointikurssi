@@ -83,24 +83,32 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="BallController.cpp" />
+    <ClCompile Include="BallController2.cpp" />
     <ClCompile Include="GameApp.cpp" />
     <ClCompile Include="GameRunningState.cpp" />
     <ClCompile Include="GameRunningState2.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="MainMenuState.cpp" />
     <ClCompile Include="MyGameComponentFactory.cpp" />
+    <ClCompile Include="Paddle1Controller.cpp" />
+    <ClCompile Include="Paddle2Controller.cpp" />
     <ClCompile Include="PlayerController.cpp" />
+    <ClCompile Include="PongGameComponents.cpp" />
     <ClCompile Include="SplashScreenState.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="BallController.h" />
+    <ClInclude Include="BallController2.h" />
     <ClInclude Include="GameApp.h" />
     <ClInclude Include="GameRunningState.h" />
     <ClInclude Include="GameRunningState2.h" />
     <ClInclude Include="GameState.h" />
     <ClInclude Include="MainMenuState.h" />
     <ClInclude Include="MyGameComponentFactory.h" />
+    <ClInclude Include="Paddle1Controller.h" />
+    <ClInclude Include="Paddle2Controller.h" />
     <ClInclude Include="PlayerController.h" />
+    <ClInclude Include="PongGameComponents.h" />
     <ClInclude Include="SplashScreenState.h" />
   </ItemGroup>
   <ItemGroup>
