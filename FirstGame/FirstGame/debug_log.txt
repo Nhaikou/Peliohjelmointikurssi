@@ -8,16 +8,3 @@ Init... 5
 SecretGame pressed!
 Initializing secret level!
 Deinit
-SecretGame pressed!
-Initializing secret level!
-Deinit
-Start pressed!
-Initializing Level 1!
-Deinit
-SecretGame pressed!
-Initializing secret level!
-Deinit
-SecretGame pressed!
-Initializing secret level!
-Deinit
-Exit pressed!

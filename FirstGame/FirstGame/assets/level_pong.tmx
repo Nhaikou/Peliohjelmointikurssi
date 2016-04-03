@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" renderorder="right-down" width="20" height="12" tilewidth="64" tileheight="64" nextobjectid="1">
+ <tileset firstgid="1" name="PongObjects" tilewidth="64" tileheight="64" tilecount="40" columns="8">
+  <image source="pong_objects.png" trans="ffffff" width="512" height="324"/>
+ </tileset>
+ <layer name="Background" width="20" height="12">
+  <data encoding="base64" compression="zlib">
+   eJzjYGBg4KAiHgVDD/AMtANGEKBmXgNhAHMuAU0=
+  </data>
+ </layer>
+ <layer name="Objects" width="20" height="12">
+  <data encoding="base64" compression="zlib">
+   eJxjYBgFo2AUDFUAAAPAAAE=
+  </data>
+ </layer>
+</map>

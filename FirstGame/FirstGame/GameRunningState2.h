@@ -21,6 +21,7 @@ private:
 	Ref<TmxMap> m_tmap;
 	float mouseX = 0.0f;
 	float mouseY = 0.0f;
+	ComponentFactory* m_componentFactory;
 
 };
 
