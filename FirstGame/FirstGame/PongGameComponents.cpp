@@ -1,7 +1,11 @@
 #include "PongGameComponents.h"
 
 PongGameComponents::PongGameComponents()
-	: DefaultComponentFactory(), m_gameObject(0), m_map(0)
+	: DefaultComponentFactory()
+	, m_gameObject(0)
+	, m_map(0)
+	, m_fontTexture(new Texture("assets/Fixedsys_24_Bold.png"))
+	, m_font(SpriteSheet::autoFindFontFromTexture(m_fontTexture, "assets/Fixedsys_24_Bold.dat"))
 {
 
 }
@@ -14,7 +18,7 @@ Component* PongGameComponents::createNewComponent(const std::string& type, Entit
 Entity* PongGameComponents::createNewEntity(ComponentFactory* m_componentFactory, const std::string& type, Entity* parent, const PropertySet& properties)
 {
 
-	// Tiled names: "Ball", "PlayerPad1", "PlayerPad2"
+	// Tiled names: "Ball", "PlayerPad1" and "PlayerPad2".
 
 	if ("StaticColliders" == type)
 	{
@@ -47,6 +51,15 @@ Entity* PongGameComponents::createNewEntity(ComponentFactory* m_componentFactory
 		Paddle2Controller* paddle2Controller = new Paddle2Controller(m_gameObject);
 		m_gameObject->addComponent(paddle2Controller);
 		m_gameObject->setName("PlayerPad2");
+		return m_gameObject;
+	}
+
+	else if ("Score" == type)
+	{
+		m_gameObject = new GameObject(nullptr, 0);
+		m_gameObject->setType(type);
+		m_gameObject->addComponent(new TextComponent(m_gameObject, m_font));
+		m_map->getLayer("DynamicObjects")->addGameObject(m_gameObject);
 		return m_gameObject;
 	}
 

@@ -7,5 +7,4 @@ Init... 4
 Init... 5
 SecretGame pressed!
 Initializing secret level!
-Deinit
-Exit pressed!
+Error: Assertation failed at c:\users\niko\documents\github\peliohjelmointikurssi\yam2d\engine\include\ref.inl:124: m_ptr != 0

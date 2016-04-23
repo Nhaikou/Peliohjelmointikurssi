@@ -22,10 +22,8 @@ private:
 	float zoom = 1.0f;
 	Ref<GameObject> m_gameObject;
 	Ref<TmxMap> m_tmap;
-	float mouseX = 0.0f;
-	float mouseY = 0.0f;
-	PongGameComponents *m_pongComponents;
-	Ref<GameObject> m_scoreLabel1, m_scoreLabel2;
+	Ref<PongGameComponents> m_pongComponents;
+	Ref<GameObject> m_scoreFont1, m_scoreFont2;
 	size_t m_score1, m_score2 = 0;
 
 

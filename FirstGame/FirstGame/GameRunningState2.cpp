@@ -1,6 +1,12 @@
 #include "GameRunningState2.h"
 
-GameRunningState2::GameRunningState2(GameApp* app) : GameState(app), m_tmap(0), m_gameObject(0), m_pongComponents(0)
+GameRunningState2::GameRunningState2(GameApp* app)
+	: GameState(app)
+	, m_tmap(0)
+	, m_gameObject(0)
+	, m_pongComponents(0)
+	, m_score1(0)
+	, m_score2(0)
 {
 	esLogMessage("Initializing secret level!");
 	m_tmap = new TmxMap();
@@ -13,13 +19,8 @@ GameRunningState2::GameRunningState2(GameApp* app) : GameState(app), m_tmap(0), 
 		m_tmap->getCamera()->setPosition(vec2(m_tmap->getWidth()/2.22f, m_tmap->getHeight()/2.2f));
 	}
 
-	// Player 1 score
-	//m_scoreLabel1->getComponent<TextComponent>()->getText()->setText(std::to_string(m_score1));
-	//m_scoreLabel1->setPosition(vec2(m_tmap->getWidth(), m_tmap->getHeight()));
-
-	// Player 2 score
-	//m_scoreLabel2->getComponent<TextComponent>()->getText()->setText(std::to_string(m_score2));
-	//m_scoreLabel2->setPosition(vec2(m_tmap->getWidth(), m_tmap->getHeight()));
+	m_scoreFont1 = static_cast<GameObject*>(m_pongComponents->createNewEntity(m_pongComponents, "Score", nullptr, PropertySet()));
+	m_scoreFont2 = static_cast<GameObject*>(m_pongComponents->createNewEntity(m_pongComponents, "Score", nullptr, PropertySet()));
 }
 
 bool GameRunningState2::update(ESContext* ctx, float deltaTime)
@@ -70,5 +71,4 @@ GameRunningState2::~GameRunningState2()
 {
 	// Delete your game content
 	esLogMessage("Deinit");
-	delete m_pongComponents;
 }

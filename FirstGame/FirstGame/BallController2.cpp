@@ -36,7 +36,8 @@ void BallController2::update(float deltaTime)
 	{
 		movement = false;
 		position = vec2(positionX, positionY);
-		return getGameObject()->setPosition(9, 10); // Positions are 64x64 tiels
+		// Returns ball position in the middle
+		return getGameObject()->setPosition(9, 6); // Positions are 64x64 tiels
 	}
 
 }
@@ -48,7 +49,8 @@ void BallController2::collisionCheck(GameObject* objects, float deltaTime)
 	{
 		if (objects->getName() == "Left" || objects->getName() == "Right")
 		{
-			position.x *= -1.0f;
+			movement = false;
+			return getGameObject()->setPosition(9, 6);
 		}
 
 		if (objects->getName() == "Top" || objects->getName() == "Bottom")
