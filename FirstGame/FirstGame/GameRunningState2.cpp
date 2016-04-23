@@ -13,6 +13,13 @@ GameRunningState2::GameRunningState2(GameApp* app) : GameState(app), m_tmap(0), 
 		m_tmap->getCamera()->setPosition(vec2(m_tmap->getWidth()/2.22f, m_tmap->getHeight()/2.2f));
 	}
 
+	// Player 1 score
+	//m_scoreLabel1->getComponent<TextComponent>()->getText()->setText(std::to_string(m_score1));
+	//m_scoreLabel1->setPosition(vec2(m_tmap->getWidth(), m_tmap->getHeight()));
+
+	// Player 2 score
+	//m_scoreLabel2->getComponent<TextComponent>()->getText()->setText(std::to_string(m_score2));
+	//m_scoreLabel2->setPosition(vec2(m_tmap->getWidth(), m_tmap->getHeight()));
 }
 
 bool GameRunningState2::update(ESContext* ctx, float deltaTime)

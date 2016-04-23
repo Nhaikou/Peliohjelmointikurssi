@@ -5,7 +5,7 @@ Init... 2
 Init... 3
 Init... 4
 Init... 5
-Start pressed!
-Initializing Level 1!
+SecretGame pressed!
+Initializing secret level!
 Deinit
 Exit pressed!

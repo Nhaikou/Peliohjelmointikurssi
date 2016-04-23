@@ -2,6 +2,9 @@
 #include "GameState.h"
 #include "MainMenuState.h"
 #include "PongGameComponents.h"
+#include "TextComponent.h"
+#include <iostream>
+#include <string>
 
 class GameRunningState2 : public GameState
 {
@@ -22,6 +25,9 @@ private:
 	float mouseX = 0.0f;
 	float mouseY = 0.0f;
 	PongGameComponents *m_pongComponents;
+	Ref<GameObject> m_scoreLabel1, m_scoreLabel2;
+	size_t m_score1, m_score2 = 0;
+
 
 };
 
