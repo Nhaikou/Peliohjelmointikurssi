@@ -1,9 +1,9 @@
 #include "PongGameComponents.h"
 
-PongGameComponents::PongGameComponents()
+PongGameComponents::PongGameComponents(TmxMap* map)
 	: DefaultComponentFactory()
 	, m_gameObject(0)
-	, m_map(0)
+	, m_map(map)
 	, m_fontTexture(new Texture("assets/Fixedsys_24_Bold.png"))
 	, m_font(SpriteSheet::autoFindFontFromTexture(m_fontTexture, "assets/Fixedsys_24_Bold.dat"))
 {

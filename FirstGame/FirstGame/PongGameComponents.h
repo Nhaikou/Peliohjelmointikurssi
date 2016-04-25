@@ -8,7 +8,7 @@
 class PongGameComponents : public DefaultComponentFactory
 {
 public:
-	PongGameComponents();
+	PongGameComponents(TmxMap* map);
 	virtual~PongGameComponents();
 
 	virtual Component* createNewComponent(const std::string& type, Entity* owner, const PropertySet& properties);

@@ -10,7 +10,7 @@ GameRunningState2::GameRunningState2(GameApp* app)
 {
 	esLogMessage("Initializing secret level!");
 	m_tmap = new TmxMap();
-	m_pongComponents = new PongGameComponents();
+	m_pongComponents = new PongGameComponents(m_tmap);
 
 	bool load = m_tmap->loadMapFile("assets/level_pong.tmx", m_pongComponents);
 	
