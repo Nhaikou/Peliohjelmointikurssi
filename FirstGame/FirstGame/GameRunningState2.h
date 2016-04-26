@@ -14,6 +14,8 @@ public:
 
 	virtual bool update(ESContext* ctx, float deltaTime);
 	virtual void render(ESContext* ctx);
+	void updatePS1Score(int m_score);
+	void updatePS2Score(int m_score);
 	float getZoom();
 	void setZoom(float newZoom);
 

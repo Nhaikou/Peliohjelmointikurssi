@@ -43,17 +43,21 @@ bool GameRunningState2::update(ESContext* ctx, float deltaTime)
 	}
 
 	// Collision checks
-	slm::vec2 plaa = slm::vec2(0.0f);
+	slm::vec2 check = slm::vec2(0.0f);
 	for (int i = 0; i < m_tmap->getLayer("StaticColliders")->getGameObjects().size(); i++)
 	{
-		if (m_tmap->findGameObjectByName("Ball")->collidesTo(m_tmap->getLayer("StaticColliders")->getGameObjects()[i], &plaa))
+		if (m_tmap->findGameObjectByName("Ball")->collidesTo(m_tmap->getLayer("StaticColliders")->getGameObjects()[i], &check))
 		{
 			m_tmap->findGameObjectByName("Ball")->getComponent<BallController2>()->collisionCheck(m_tmap->getLayer("StaticColliders")->getGameObjects()[i], deltaTime);
+			/*if (m_gameObject->getName() == "Right", &check)
+			{
+				std::cout << "+ 1 point to P1" << std::endl;
+			}*/
 		}
 	}
 	for (int i = 0; i < m_tmap->getLayer("DynamicObjects")->getGameObjects().size(); i++)
 	{
-		if (m_tmap->findGameObjectByName("Ball")->collidesTo(m_tmap->getLayer("DynamicObjects")->getGameObjects()[i], &plaa))
+		if (m_tmap->findGameObjectByName("Ball")->collidesTo(m_tmap->getLayer("DynamicObjects")->getGameObjects()[i], &check))
 		{
 			m_tmap->findGameObjectByName("Ball")->getComponent<BallController2>()->collisionCheck(m_tmap->getLayer("DynamicObjects")->getGameObjects()[i], deltaTime);
 		}
@@ -62,6 +66,19 @@ bool GameRunningState2::update(ESContext* ctx, float deltaTime)
 	m_tmap->update(deltaTime);
 	return true;
 }
+
+void GameRunningState2::updatePS1Score(int m_score)
+{
+	m_score1 += m_score;
+	m_scoreFont1->getComponent<TextComponent>()->getText()->setText(std::to_string(m_score1));
+}
+
+void GameRunningState2::updatePS2Score(int m_score)
+{
+	m_score2 += m_score;
+	m_scoreFont2->getComponent<TextComponent>()->getText()->setText(std::to_string(m_score2));
+}
+
 
 void GameRunningState2::render(ESContext* ctx)
 {

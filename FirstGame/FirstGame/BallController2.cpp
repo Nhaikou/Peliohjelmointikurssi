@@ -61,7 +61,7 @@ void BallController2::collisionCheck(GameObject* objects, float deltaTime)
 		if (objects->getName() == "PlayerPad1" || objects->getName() == "PlayerPad2")
 		{
 			position.x *= -1.0f;
-			moveSpeed *= 1.2f;		// TODO: FIX VELOCITY
+			moveSpeed *= 1.001f;		// TODO: FIX VELOCITY
 		}
 	}
 }
