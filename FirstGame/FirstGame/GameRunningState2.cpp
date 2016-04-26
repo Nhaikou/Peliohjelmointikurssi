@@ -23,15 +23,15 @@ GameRunningState2::GameRunningState2(GameApp* app)
 	m_scoreFont1 = static_cast<GameObject*>(m_pongComponents->createNewEntity(m_pongComponents, "Score", nullptr, PropertySet()));
 	m_scoreFont1->getComponent<TextComponent>()->getText()->setText(std::to_string(m_score1));
 	m_scoreFont1->getComponent<TextComponent>()->getText()->setColor(255, 255, 255, 1);
-	m_scoreFont1->setSize(m_scoreFont1->getSize() * 3.0f);
-	m_scoreFont1->setPosition(7.0f, 3.0f);
+	m_scoreFont1->setSize(vec2(64.0f, 64.0f) * 20.0f);
+	m_scoreFont1->setPosition(7.0f, 6.0f);
 	
 	// Player 2 score
 	m_scoreFont2 = static_cast<GameObject*>(m_pongComponents->createNewEntity(m_pongComponents, "Score", nullptr, PropertySet()));
 	m_scoreFont2->getComponent<TextComponent>()->getText()->setText(std::to_string(m_score2));
 	m_scoreFont2->getComponent<TextComponent>()->getText()->setColor(255, 255, 255, 1);
-	m_scoreFont2->setSize(m_scoreFont2->getSize() * 3.0f);
-	m_scoreFont2->setPosition(11.0f, 3.0f);
+	m_scoreFont2->setSize(vec2(64.0f, 64.0f) * 20.0f);
+	m_scoreFont2->setPosition(15.0f, 6.0f);
 }
 
 bool GameRunningState2::update(ESContext* ctx, float deltaTime)

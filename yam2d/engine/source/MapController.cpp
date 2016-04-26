@@ -129,8 +129,11 @@ void Renderer_renderText(Text* textComponent, Layer* layer)
 	vec2 position = layer->getMap()->tileToDeviceCoordinates(go->getPosition().x, go->getPosition().y);
 	textComponent->setDepth(layer->getDepth());
 	textComponent->setOpacity(layer->getOpacity());
+	vec2 scale = go->getSize();
+	scale.x /= (float)layer->getMap()->getTileWidth();
+	scale.y /= (float)layer->getMap()->getTileHeight();
 
-	layer->getBatch()->addText(textComponent->getFont()->getTexture(), textComponent, position, -go->getRotation());
+	layer->getBatch()->addText(textComponent->getFont()->getTexture(), textComponent, position, -go->getRotation(), scale);
 }
 
 

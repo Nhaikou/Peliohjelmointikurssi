@@ -7,7 +7,7 @@ PongGameComponents::PongGameComponents(TmxMap* map)
 	, m_fontTexture(new Texture("assets/Fixedsys_24_Bold.png"))
 	, m_font(SpriteSheet::autoFindFontFromTexture(m_fontTexture, "assets/Fixedsys_24_Bold.dat"))
 {
-
+	m_map->addLayer(TmxMap::BACKGROUND0, new Layer(m_map, "Background", 0.5f, true, false));
 }
 
 Component* PongGameComponents::createNewComponent(const std::string& type, Entity* owner, const PropertySet& properties)
@@ -59,7 +59,7 @@ Entity* PongGameComponents::createNewEntity(ComponentFactory* m_componentFactory
 		m_gameObject = new GameObject(nullptr, 0);
 		m_gameObject->setType(type);
 		m_gameObject->addComponent(new TextComponent(m_gameObject, m_font));
-		m_map->getLayer("DynamicObjects")->addGameObject(m_gameObject);
+		m_map->getLayer("Background")->addGameObject(m_gameObject);
 		return m_gameObject;
 	}
 
