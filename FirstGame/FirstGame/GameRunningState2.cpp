@@ -32,6 +32,14 @@ GameRunningState2::GameRunningState2(GameApp* app)
 	m_scoreFont2->getComponent<TextComponent>()->getText()->setColor(255, 255, 255, 1);
 	m_scoreFont2->setSize(vec2(64.0f, 64.0f) * 20.0f);
 	m_scoreFont2->setPosition(15.0f, 6.0f);
+
+	// You only need 5 points to win
+
+	// Player 1 win text
+	m_p1Win = static_cast<GameObject*>(m_pongComponents->createNewEntity(m_pongComponents, "Score", nullptr, PropertySet()));
+	
+	// Player 2 win text
+	m_p2Win = static_cast<GameObject*>(m_pongComponents->createNewEntity(m_pongComponents, "Score", nullptr, PropertySet()));
 }
 
 bool GameRunningState2::update(ESContext* ctx, float deltaTime)
@@ -52,6 +60,15 @@ bool GameRunningState2::update(ESContext* ctx, float deltaTime)
 			if ("Right" == m_tmap->getLayer("StaticColliders")->getGameObjects()[i]->getName())
 			{
 				updatePS1Score(1);
+				if (m_score1 == 5)
+				{
+					/*totalTime += deltaTime;
+					if (totalTime <= 5.0f)
+					{
+						getApp()->setState(new MainMenuState(getApp()));
+						return true;
+					}*/
+				}
 			}
 			else if ("Left" == m_tmap->getLayer("StaticColliders")->getGameObjects()[i]->getName())
 			{
@@ -75,12 +92,29 @@ void GameRunningState2::updatePS1Score(int m_score)
 {
 	m_score1 += m_score;
 	m_scoreFont1->getComponent<TextComponent>()->getText()->setText(std::to_string(m_score1));
+
+	if (m_score1 == 5)
+	{
+		m_p1Win->getComponent<TextComponent>()->getText()->setText("Player 1 wins!");
+		m_p1Win->getComponent<TextComponent>()->getText()->setColor(200, 200, 200, 1);
+		m_p1Win->setSize(vec2(64.0f, 64.0f) * 2.0f);
+		m_p1Win->setPosition(9.0f, 2.0f);
+	}
+
 }
 
 void GameRunningState2::updatePS2Score(int m_score)
 {
 	m_score2 += m_score;
 	m_scoreFont2->getComponent<TextComponent>()->getText()->setText(std::to_string(m_score2));
+
+	if (m_score2 == 5)
+	{
+		m_p2Win->getComponent<TextComponent>()->getText()->setText("Player 2 wins!");
+		m_p2Win->getComponent<TextComponent>()->getText()->setColor(200, 200, 200, 1);
+		m_p2Win->setSize(vec2(64.0f, 64.0f) * 2.0f);
+		m_p2Win->setPosition(9.0f, 2.0f);
+	}
 }
 
 
