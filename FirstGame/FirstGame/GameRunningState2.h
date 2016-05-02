@@ -20,9 +20,7 @@ public:
 	void setZoom(float newZoom);
 
 private:
-	float deltaTime = 0;
-	float totalTime = 0;
-	float zoom = 1.0f;
+	float m_zoom = 1.0f;
 	Ref<GameObject> m_gameObject;
 	Ref<TmxMap> m_tmap;
 	Ref<PongGameComponents> m_pongComponents;

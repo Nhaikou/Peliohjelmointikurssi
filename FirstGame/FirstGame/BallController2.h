@@ -26,6 +26,8 @@ public:
 	void collisionCheck(GameObject* objects, float deltaTime);
 
 	void setPositionToMouse(slm::vec2 posMouse){ getGameObject()->setPosition(posMouse); }
+	float getMoveSpeed(){ return moveSpeed; }
+	void setMoveSpeed(float moveSpeed){ this->moveSpeed = moveSpeed; }
 
 private:
 	bool movement;

@@ -62,17 +62,16 @@ bool GameRunningState2::update(ESContext* ctx, float deltaTime)
 				updatePS1Score(1);
 				if (m_score1 == 5)
 				{
-					/*totalTime += deltaTime;
-					if (totalTime <= 5.0f)
-					{
-						getApp()->setState(new MainMenuState(getApp()));
-						return true;
-					}*/
+					m_tmap->findGameObjectByName("Ball")->getComponent<BallController2>()->setMoveSpeed(0.0f);
 				}
 			}
 			else if ("Left" == m_tmap->getLayer("StaticColliders")->getGameObjects()[i]->getName())
 			{
 				updatePS2Score(1);
+				if (m_score2 == 5)
+				{
+					m_tmap->findGameObjectByName("Ball")->getComponent<BallController2>()->setMoveSpeed(0.0f);
+				}
 			}
 		}
 	}
@@ -95,9 +94,9 @@ void GameRunningState2::updatePS1Score(int m_score)
 
 	if (m_score1 == 5)
 	{
-		m_p1Win->getComponent<TextComponent>()->getText()->setText("Player 1 wins!");
+		m_p1Win->getComponent<TextComponent>()->getText()->setText("Player 1 wins! Press Esc for Main Menu.. ");
 		m_p1Win->getComponent<TextComponent>()->getText()->setColor(200, 200, 200, 1);
-		m_p1Win->setSize(vec2(64.0f, 64.0f) * 2.0f);
+		m_p1Win->setSize(vec2(64.0f, 64.0f) * 1.5f);
 		m_p1Win->setPosition(9.0f, 2.0f);
 	}
 
@@ -110,9 +109,9 @@ void GameRunningState2::updatePS2Score(int m_score)
 
 	if (m_score2 == 5)
 	{
-		m_p2Win->getComponent<TextComponent>()->getText()->setText("Player 2 wins!");
+		m_p2Win->getComponent<TextComponent>()->getText()->setText("Player 2 wins! Press Esc for Main Menu..");
 		m_p2Win->getComponent<TextComponent>()->getText()->setColor(200, 200, 200, 1);
-		m_p2Win->setSize(vec2(64.0f, 64.0f) * 2.0f);
+		m_p2Win->setSize(vec2(64.0f, 64.0f) * 1.5f);
 		m_p2Win->setPosition(9.0f, 2.0f);
 	}
 }
