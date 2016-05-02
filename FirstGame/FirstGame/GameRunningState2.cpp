@@ -49,10 +49,14 @@ bool GameRunningState2::update(ESContext* ctx, float deltaTime)
 		if (m_tmap->findGameObjectByName("Ball")->collidesTo(m_tmap->getLayer("StaticColliders")->getGameObjects()[i], &check))
 		{
 			m_tmap->findGameObjectByName("Ball")->getComponent<BallController2>()->collisionCheck(m_tmap->getLayer("StaticColliders")->getGameObjects()[i], deltaTime);
-			/*if (m_gameObject->getName() == "Right", &check)
+			if ("Right" == m_tmap->getLayer("StaticColliders")->getGameObjects()[i]->getName())
 			{
-				std::cout << "+ 1 point to P1" << std::endl;
-			}*/
+				updatePS1Score(1);
+			}
+			else if ("Left" == m_tmap->getLayer("StaticColliders")->getGameObjects()[i]->getName())
+			{
+				updatePS2Score(1);
+			}
 		}
 	}
 	for (int i = 0; i < m_tmap->getLayer("DynamicObjects")->getGameObjects().size(); i++)
