@@ -32,7 +32,6 @@ public:
 private:
 	bool movement;
 	float moveSpeed;
-	float velocity;
 	vec2 direction;
 	vec2 position;
 	float positionX;

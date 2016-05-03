@@ -1,5 +1,4 @@
 #include "BallController2.h"
-#define PI 3.1415;
 
 BallController2::BallController2(GameObject* owner)
 	: Component(owner, Component::getDefaultProperties())
@@ -8,19 +7,20 @@ BallController2::BallController2(GameObject* owner)
 	// Set movespeed for the ball
 	// Tiles / second
 	moveSpeed = 1.0f;
-	velocity = 0.001f;
 
 	// Ball position
 	positionX = 3.0f;
 	positionY = -1.0f;
 
-	//
+	// Using random angle from 60 degrees to shoot in start
 	float angle = slm::radians(rand() % 90 + 315);
 	direction.x = cosf(angle);
 	direction.y = sinf(angle);
 
 	if ((rand() % 100) < 50)
+	{
 		direction.x *= -1;
+	}
 
 	position = vec2(positionX, positionY);
 }
@@ -64,7 +64,9 @@ void BallController2::collisionCheck(GameObject* objects, float deltaTime)
 			direction.y = sinf(angle);
 
 			if ((rand() % 100) < 50)
+			{
 				direction.x *= -1;
+			}
 
 			return getGameObject()->setPosition(9, 6);
 		}
@@ -76,12 +78,20 @@ void BallController2::collisionCheck(GameObject* objects, float deltaTime)
 
 		if (objects->getName() == "PlayerPad1" || objects->getName() == "PlayerPad2")
 		{
+			// Ball will bounce in random to 45 and -45 degree from the paddles,
+			// so it's hard for the other player to predict where the ball will be
+			// and the ball will gain more speed when bouncing from the paddles.
+
 			float angle = 0.0f;
 			
-			if(direction.x > 0)
+			if (direction.x > 0)
+			{
 				angle = slm::radians(rand() % 90 + 135);
+			}
 			else
+			{
 				angle = slm::radians(rand() % 90 + 315);
+			}
 
 			direction.x = cosf(angle);
 			direction.y = sinf(angle);
