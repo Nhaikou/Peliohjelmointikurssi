@@ -11,7 +11,7 @@ Paddle1Controller::~Paddle1Controller(void)
 
 void Paddle1Controller::update(float deltaTime)
 {
-	float moveSpeed = 4.0f;	//Tiles / second
+	float moveSpeed = 8.0f;	//Tiles / second
 	vec2 direction;
 	// Get move direction from keyboard
 

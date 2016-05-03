@@ -130,11 +130,14 @@ void GameRunningState2::render(ESContext* ctx)
 	// Screen size to camera
 	m_tmap->getCamera()->setScreenSize(ctx->width, ctx->height);
 
+	// HAX: Tiled and yam2d y-coordinates works differently.
+	// First you must make vec2 temp's, so that u can get their positions and add + 1.0f to y-coordinate
+	// Then you render the map, and after that, you set player paddles to the new positions.
 	vec2 temp1 = m_tmap->findGameObjectByName("PlayerPad1")->getPosition();
 	m_tmap->findGameObjectByName("PlayerPad1")->setPosition(temp1 + vec2(0.0f, 1.0f));
-
 	vec2 temp2 = m_tmap->findGameObjectByName("PlayerPad2")->getPosition();
 	m_tmap->findGameObjectByName("PlayerPad2")->setPosition(temp2 + vec2(0.0f, 1.0f));
+	
 	// Render map and all of its layers containing GameObjects to screen.
 	m_tmap->render();
 
