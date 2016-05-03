@@ -42,6 +42,7 @@ void BallController2::update(float deltaTime)
 	{
 		movement = false;
 		position = vec2(positionX, positionY);
+		moveSpeed = 1.0f;
 		// Returns ball position in the middle
 		return getGameObject()->setPosition(9, 6); // Positions are 64x64 tiels
 	}

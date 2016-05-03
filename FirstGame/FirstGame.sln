@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2013
-VisualStudioVersion = 12.0.31101.0
+VisualStudioVersion = 12.0.30501.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "FirstGame", "FirstGame\FirstGame.vcxproj", "{1DE16BB0-9E5C-46F2-ADA9-2366D0273162}"
 EndProject
@@ -17,6 +17,7 @@ Global
 		{1DE16BB0-9E5C-46F2-ADA9-2366D0273162}.Debug|Win32.Build.0 = Debug|Win32
 		{1DE16BB0-9E5C-46F2-ADA9-2366D0273162}.Release|Win32.ActiveCfg = Release|Win32
 		{1DE16BB0-9E5C-46F2-ADA9-2366D0273162}.Release|Win32.Build.0 = Release|Win32
+		{1DE16BB0-9E5C-46F2-ADA9-2366D0273162}.Release|Win32.Deploy.0 = Release|Win32
 		{48CDA762-FEA3-4FF9-3D05-B05D6038CAD6}.Debug|Win32.ActiveCfg = Debug|Win32
 		{48CDA762-FEA3-4FF9-3D05-B05D6038CAD6}.Debug|Win32.Build.0 = Debug|Win32
 		{48CDA762-FEA3-4FF9-3D05-B05D6038CAD6}.Release|Win32.ActiveCfg = Release|Win32
