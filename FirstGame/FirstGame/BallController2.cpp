@@ -3,7 +3,6 @@
 BallController2::BallController2(GameObject* owner)
 	: Component(owner, Component::getDefaultProperties())
 {
-
 	movement = false;
 	// Set movespeed for the ball
 	// Tiles / second
@@ -45,6 +44,7 @@ void BallController2::update(float deltaTime)
 void BallController2::collisionCheck(GameObject* objects, float deltaTime)
 {
 	// StaticCollider walls are "Top", "Left", "Right" and "Bottom"
+	// DynamicObject colliders are "PlayerPad1" and "PlayerPad2"
 	if (movement)
 	{
 		if (objects->getName() == "Left" || objects->getName() == "Right")

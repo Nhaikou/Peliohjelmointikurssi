@@ -125,11 +125,21 @@ void GameRunningState2::render(ESContext* ctx)
 	// Clear the color buffer
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
+	
+	
 	// Screen size to camera
 	m_tmap->getCamera()->setScreenSize(ctx->width, ctx->height);
 
+	vec2 temp1 = m_tmap->findGameObjectByName("PlayerPad1")->getPosition();
+	m_tmap->findGameObjectByName("PlayerPad1")->setPosition(temp1 + vec2(0.0f, 1.0f));
+
+	vec2 temp2 = m_tmap->findGameObjectByName("PlayerPad2")->getPosition();
+	m_tmap->findGameObjectByName("PlayerPad2")->setPosition(temp2 + vec2(0.0f, 1.0f));
 	// Render map and all of its layers containing GameObjects to screen.
 	m_tmap->render();
+
+	m_tmap->findGameObjectByName("PlayerPad1")->setPosition(temp1);
+	m_tmap->findGameObjectByName("PlayerPad2")->setPosition(temp2);
 }
 
 GameRunningState2::~GameRunningState2()
